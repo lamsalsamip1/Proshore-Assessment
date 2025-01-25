@@ -1,6 +1,6 @@
 ## RAG Agent Based Chatbot to ask queries and make bookings.
 
-Deployed URL:
+Deployed URL: https://travelbotsamip-hqa0auepdvhxduhb.canadacentral-01.azurewebsites.net/
 
 Steps to run the chatbot locally:
 
