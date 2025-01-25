@@ -2,7 +2,7 @@
 
 Deployed URL:
 
-#Steps to run the chatbot locally:
+Steps to run the chatbot locally:
 
 1. Create a virtual environment
    `python -m venv env`
