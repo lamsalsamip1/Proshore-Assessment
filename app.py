@@ -5,6 +5,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 
 
 st.title("AI Trekking Agent")
+st.markdown("This is a chatbot that can help you with your trekking queries on various destinations.You can also make a booking through this chatbot. ")
 
 # Initialize chat history
 if "messages" not in st.session_state:
