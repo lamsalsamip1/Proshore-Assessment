@@ -9,8 +9,8 @@ Example prompts: "Can you tell me about Ama Yangri Trek?", "Can you provide me a
 Deployed URL: https://travelbotsamip-hqa0auepdvhxduhb.canadacentral-01.azurewebsites.net/
 
 The chatbot uses an agent that has two tools at its disposal.
-1) RAG tool -> to answer queries on trekking destinations
-2) Booking tool -> to make bookings.
+1) **RAG tool** -> to answer queries on trekking destinations
+2) **Booking tool** -> to make bookings.
 
 Based on the user query, the chatbot invokes one of these two tools. 
 
@@ -20,15 +20,15 @@ Bookings can be viewed in the bookings section of the web app.
 
 The following tools have been used in the application:
 
-# LLMs - GPT 4o mini via AzureOpenAI as the main model, Gemini 1.5 flash for resolving query with chat history.
+**LLMs**  - GPT 4o mini via AzureOpenAI as the main model, Gemini 1.5 flash for resolving query with chat history.
 
-# Embeddings - "text-embedding-3-small" via AzureOpenAI Embeddings
+**Embeddings** - "text-embedding-3-small" via AzureOpenAI Embeddings
 
-# Databases - ChromaDB for vector database, PostgreSQL to store booking related information.
+**Databases** - ChromaDB for vector database, PostgreSQL to store booking related information.
 
-# Major Libraries - Langchain for chatbot, Streamlit for UI
+**Major Libraries** - Langchain for chatbot, Streamlit for UI
 
-# Containerization - Docker
+**Containerization** - Docker
 
 # Deployment - Microsoft Azure (Web App Service)
 
