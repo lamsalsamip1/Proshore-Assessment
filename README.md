@@ -30,5 +30,5 @@ The following tools have been used in the application:
 
 **Containerization** - Docker
 
-# Deployment - Microsoft Azure (Web App Service)
+**Deployment** - Microsoft Azure (Web App Service)
 
