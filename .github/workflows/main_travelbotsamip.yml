@@ -48,4 +48,4 @@ jobs:
         app-name: 'travelbotsamip'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_1e69d2cd516844539fa4340715479652 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_21a5a4038d7b42cab01029a7896957db }}/lamsalsamip1/travelbot:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_21a5a4038d7b42cab01029a7896957db }}/travelbot:${{ github.sha }}'
