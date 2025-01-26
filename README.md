@@ -1,12 +1,12 @@
 ## RAG Agent Based Chatbot to ask queries on trekking destinations and make bookings.
 
-Features:
+#### Features:
 1) QA on information about trekking destinations in the dataset, sample was created consisting of destinations like Langtang, Ama Yangri, ABC, Shey Phoksundo, etc.
 2) Conversational booking. User can express intention to make a booking with the chatbot, and it will ask for necessary inputs and make the booking.
 
-Example prompts: "Can you tell me about Ama Yangri Trek?", "Can you provide me an itinerary for Shey Phoksundo Trek?", "What is the best time to do this trek?", "Help me make a booking"
+**Example prompts**: "Can you tell me about Ama Yangri Trek?", "Can you provide me an itinerary for Shey Phoksundo Trek?", "What is the best time to do this trek?", "Help me make a booking"
    
-Deployed URL: https://travelbotsamip-hqa0auepdvhxduhb.canadacentral-01.azurewebsites.net/
+**Deployed URL**: https://travelbotsamip-hqa0auepdvhxduhb.canadacentral-01.azurewebsites.net/
 
 The chatbot uses an agent that has two tools at its disposal.
 1) **RAG tool** -> to answer queries on trekking destinations
