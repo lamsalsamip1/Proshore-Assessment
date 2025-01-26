@@ -20,10 +20,15 @@ Bookings can be viewed in the bookings section of the web app.
 
 The following tools have been used in the application:
 
-LLMs - GPT 4o mini via AzureOpenAI as the main model, Gemini 1.5 flash for resolving query with chat history.
-Embeddings - "text-embedding-3-small" via AzureOpenAI Embeddings
-Databases - ChromaDB for vector database, PostgreSQL to store booking related information.
-Major Libraries - Langchain for chatbot, Streamlit for UI
-Containerization - Docker
-Deployment - Microsoft Azure (Web App Service)
+# LLMs - GPT 4o mini via AzureOpenAI as the main model, Gemini 1.5 flash for resolving query with chat history.
+
+# Embeddings - "text-embedding-3-small" via AzureOpenAI Embeddings
+
+# Databases - ChromaDB for vector database, PostgreSQL to store booking related information.
+
+# Major Libraries - Langchain for chatbot, Streamlit for UI
+
+# Containerization - Docker
+
+# Deployment - Microsoft Azure (Web App Service)
 
