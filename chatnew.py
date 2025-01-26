@@ -1,5 +1,6 @@
 import os
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import create_retrieval_chain, create_history_aware_retriever
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -30,6 +31,9 @@ llm = AzureChatOpenAI(
     azure_deployment="gpt-4o-mini",  # or your deployment
     api_version="2024-08-01-preview",# or your api version
 )
+g_api_key = os.getenv("GOOGLE_API_KEY")
+# Load the models
+llm2 = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=g_api_key)
 
 AZURE_OPENAI_ENDPOINT='https://samip-m42jr2pq-eastus2.cognitiveservices.azure.com/openai/deployments/text-embedding-3-small-2/embeddings?api-version=2023-05-15'
 
@@ -58,7 +62,7 @@ contextualize_q_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 history_aware_retriever = create_history_aware_retriever(
-    llm, retriever, contextualize_q_prompt
+    llm2, retriever, contextualize_q_prompt
 )
 
 # Create the retrieval chain
@@ -108,7 +112,7 @@ agent_prompt = ChatPromptTemplate.from_messages(
             "- Use the `rag_chain_tool` for providing information or answering questions related to trekking. Avoid providing standalone answers without the tool. While invoking this tool, pass the query and chat history exactly as it is, with no changes.\n"
             "- Use the `booking_tool` for handling bookings and reservations. When the user wants to make a booking, sequentially ask for destination, date, and name. Once you have this information, call the booking tool by passing these 3 parameters.\n"
             "Always invoke the `rag_chain_tool` if user asks any sort of a question.\n"
-            "The only exception is when the user's input is a simple greeting (e.g., 'hi', 'hello', 'hey'), in which case you can respond directly without using a tool. "
+            "The only exception is when the user's input is a simple greeting (e.g., 'hi', 'hello', 'hey') or complements, in which case you can respond directly without using a tool. "
         )),
         MessagesPlaceholder("chat_history"),
         ("human", "{input}"),
@@ -118,7 +122,7 @@ agent_prompt = ChatPromptTemplate.from_messages(
 
 # Create agent
 agent = create_tool_calling_agent(llm, tools, agent_prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools,verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools,verbose=False)
 
 # Chat interface
 # MAX_CHAT_HISTORY_LENGTH=5
@@ -128,17 +132,18 @@ agent_executor = AgentExecutor(agent=agent, tools=tools,verbose=True)
 #     response = agent_executor.invoke({"input": user_input, "chat_history": chat_history})
 
 #     print("Bot:", response['output'])
-
-#     # Update chat history only if the booking tool wasn't invoked
-#     if "booking_tool" not in response.get('tool_used', ''):  # Check if 'booking_tool' is invoked
-#         chat_history.append(HumanMessage(content=user_input))
-#         chat_history.append(AIMessage(content=response['output']))
-#     else :
-#         chat_history.clear()  
+#     chat_history.append(HumanMessage(content=user_input))
+#     chat_history.append(AIMessage(content=response['output']))
+    # # Update chat history only if the booking tool wasn't invoked
+    # if "booking_tool" not in response.get('tool_used', ''):  # Check if 'booking_tool' is invoked
+    #     chat_history.append(HumanMessage(content=user_input))
+    #     chat_history.append(AIMessage(content=response['output']))
+    # else :
+    #     chat_history.clear()  
     
-#     # Keep chat history length in check
-#     if len(chat_history) > MAX_CHAT_HISTORY_LENGTH:
-#         chat_history = chat_history[-MAX_CHAT_HISTORY_LENGTH:]
+    # # Keep chat history length in check
+    # if len(chat_history) > MAX_CHAT_HISTORY_LENGTH:
+    #     chat_history = chat_history[-MAX_CHAT_HISTORY_LENGTH:]
 
    
 # Chat function
